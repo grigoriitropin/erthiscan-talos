@@ -1,0 +1,19 @@
+machine:
+    install:
+        disk: ENC[AES256_GCM,data:zQXpJjvZV80=,iv:6kk8fKM4U6uQgvXP9+qOiqZ01rnnm+tdFuArb7hiXRM=,tag:35BIp1lSCuYCjCLQcVGIVQ==,type:str]
+        wipe: ENC[AES256_GCM,data:N/ZbYZg=,iv:jrVB7EKdZWpPn21Aac39Fu8JGU0Ut6kjmOKov1v/xFo=,tag:RRiqk+7t16wi+E5DgacWIw==,type:bool]
+sops:
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB5a2l5US9waU1BL0F6cjN3
+            WThyVHhVaW1zNXl6OTI3OGpxZjZkdkQ2RVZZCmppS0NmZ3ZVSnk1eHI2TFUzMkVZ
+            d2FuNHVSMm56SEhwL3VheElkZk1uSGMKLS0tIGFTZDB1S2IveExGSGpDcC9pTWts
+            SVJZbkIxOTY4ekVhMGczTE1FR2FiODQKKIEpVhuMGAsZekt+hYtTY9HQRFVPpQ8/
+            is3ZltHOR2vjmSFubwWVXdJCRIT5EocZo9d9Fb1Ds55F1GLV81khBA==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age13ejjeeu9nn7nx0x2lgtpgm6j7m6wgjmncyux0h2pkn0u8jwtqqsqvtn2c5
+    lastmodified: "2026-05-13T19:37:14Z"
+    mac: ENC[AES256_GCM,data:h8etP2j8XcFZf5P0bmpSEZk4QF5s/HplCSXDli4lP3koBIL2QFDncKjO6nW6VTym4ZgNndXfERZevVJ7TCPg/kJO5P6kFUNfT29Zk97YZbKzu3ygd2Zwe09Daf7dsW31icmg7/Mq2NCvpbVIBVflUhBrllfxiZJZdhWCYyuW1zI=,iv:z4RLN/eV75Numj36Vx+EK2httWNzzEHLrs/sTM4xoRg=,tag:RpFGKNUqx7piHeJz/xElzA==,type:str]
+    unencrypted_suffix: _unencrypted
+    version: 3.13.0

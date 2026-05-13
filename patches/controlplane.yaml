@@ -1,0 +1,35 @@
+machine:
+    install:
+        disk: ENC[AES256_GCM,data:HzcZpHFtww4=,iv:dlVIqzmVnoPevU6hEyuh0A6cB/R81lzrBvaiEpwtIA0=,tag:AgwYvNEkYNvd2CpnwdZW4A==,type:str]
+        image: ENC[AES256_GCM,data:er2UPgh+yobSecq65IpZqet3DXBlvfo8qMTc5JVGQMJXodK++uD2KHP3KV5BBBvuI7R5/9ZKvZQM+tZ/ubIkzuKhhi7T6RyQDtTSqBX/cDOXqfMZfN+/lRjmeW7NSSw2Lu65JTnpnhQiRH4=,iv:taktn1FYQvR9PbyaFnoz0qAwE6MSg8NV3/v5vzmGiiU=,tag:gqo/ISIa/IZknMnJOk5+wg==,type:str]
+        wipe: ENC[AES256_GCM,data:lDLI1HI=,iv:IXtFVRMjdTXDF8cE3kEaa0C2Jj4iNp7ORVs41qEN8E8=,tag:AdMW3fjRKPgqg0SQuIKNhg==,type:bool]
+cluster:
+    controlPlane:
+        endpoint: ENC[AES256_GCM,data:M8ETgtGLKzI811Y0RSwgK1Tb0yyiEo4kSuY=,iv:mjlMt9CfRNxUcTmuRFgfAy3lF4n0LSrYsXQ7S0Ym7cY=,tag:raDURMC+AaJBrdR8x9Bcgw==,type:str]
+    clusterName: ENC[AES256_GCM,data:orlfGeYEdJsgZQ3EaA==,iv:BbEfMoc5oQusundhr1ebDrmY8OTfruXEc3utFcbw43o=,tag:pIHJb4oxNKGKfTuAEf94sw==,type:str]
+    network:
+        podSubnets:
+            - ENC[AES256_GCM,data:W9fWNXl3/o9R7rsonw==,iv:rh+TkiY22WYziNMBzQPtQJ9kSyhnqofW9Pl7VrQQpEI=,tag:+mB+K+QV+pkdKc8nVzVT7w==,type:str]
+        serviceSubnets:
+            - ENC[AES256_GCM,data:NGZJ0WvlCC0gOc+c,iv:E6b/1LOxh64oQx/Nr2LFtf4kutr9H6I4ZlOa7uWNGfw=,tag:IWh/uKiNgDjjuv20Qx5ZeQ==,type:str]
+    apiServer:
+        extraArgs:
+            advertise-address: ENC[AES256_GCM,data:zCyOvYIys/s=,iv:/5CuotXC/dERVUCnlMoWYtDfDRr4ou00+1NLlIhl/ik=,tag:ClgDMY2fNmeUPVhVLpJ3Ug==,type:str]
+        certSANs:
+            - ENC[AES256_GCM,data:WryOLM7T3dw=,iv:DbWJ47/fhRdjYGKeYWCqbwaEOuWEZdTTeHj7XzbQQks=,tag:UGinuAgDEWMSEKyniC1sUg==,type:str]
+            - ENC[AES256_GCM,data:lNpDu7tz0w6VR7MXfiFg,iv:yCnXyHAju41V3xhqKBHZC4suqJ7M3gezMKw4ijUolrU=,tag:afbV5NDlMEwR7Ux27ytHwA==,type:str]
+sops:
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBkTERVTEd5dHoybGkxdUpx
+            QlVncVdlYURjZUpjTXd2cVFJYUZZVVJ1TmtFClpHNnd0YUkzcnlwVVI5NE5UOFFX
+            cEhzY0ZvWjVGOWd5Vll1d3grNDhndnMKLS0tIGtxWWtRbUx4d0F4aGhNTDFQRXpl
+            Vm90bGdRNGhiSHNNbVlrWmNVTzEwOXcKHTedNnvokctwYcbSDJ2CHZX4g6IRd/zb
+            Jg8e5FFc92fPugSmONznufoZeES4FvkB/yMY3dQbvqtHIGXpSsfVEA==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: age13ejjeeu9nn7nx0x2lgtpgm6j7m6wgjmncyux0h2pkn0u8jwtqqsqvtn2c5
+    lastmodified: "2026-05-13T19:37:14Z"
+    mac: ENC[AES256_GCM,data:uCaUypZpSXm128s377YuUylRFENefdUb7XV7n1hSzby2XxV9XbKHPEeWbWC+GyBdml94OGqOkATVZI+UU3oY4+1W+8t94ufnrHkJ0ZlpBGKla0tWLfYI5NuFSDiHtuF5kGEAQtJms4zle5x9AAvjFMgM0j3FMWIzkJAOIa6q3QI=,iv:Fr25ptfaCwu6WQ8aFynIRniHGEq/mXJxzYZ9gsNMXI4=,tag:JubD8I45ojbKg+iKt5sRyw==,type:str]
+    unencrypted_suffix: _unencrypted
+    version: 3.13.0

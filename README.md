@@ -4,27 +4,52 @@ Infrastructure-as-code (IaC) configuration for the Erthiscan Kubernetes cluster,
 
 ## Overview
 
-This repository contains the declarative configuration for the Talos Linux nodes. It utilizes `sops` and `direnv` to manage encrypted secrets and configurations at rest, decrypting them directly into a `tmpfs` (`/run/user/$UID/`) memory space during active development.
+Follows the [reproducible machine configuration](https://docs.siderolabs.com/talos/v1.13/configure-your-talos-cluster/system-configuration/reproducible-machine-configuration.md) pattern — patches instead of full configs, SOPS for secrets, direnv for decryption to tmpfs.
 
 ## Repository Structure
 
-- `controlplane.yaml`: Encrypted Talos machine configuration for control plane nodes.
-- `worker.yaml`: Encrypted Talos machine configuration for worker nodes.
-- `secret.yaml`: Encrypted environment variables and shared secrets.
-- `talosconfig`: Encrypted Talos client configuration.
-- `.envrc`: `direnv` configuration that handles on-the-fly decryption to memory.
-- `.sops.yaml`: SOPS encryption key definitions.
+| File | Purpose |
+|------|---------|
+| `secrets.yaml` | Encrypted Talos secrets bundle (PKI, tokens). Generated via `talosctl gen secrets`. |
+| `env.yaml` | Encrypted environment variables (`CONTROL_PLANE_IP`, `CLUSTER_NAME`). |
+| `talosconfig` | Encrypted Talos client configuration. |
+| `patches/` | Strategic merge patches with only our customizations (network, certSANs, Hetzner installer). |
+| `.envrc` | `direnv` — decrypts to tmpfs, exports `TALOSCONFIG`, `KUBECONFIG`, `PATCH_CP`, `PATCH_WK`. |
+| `.sops.yaml` | SOPS encryption key. |
 
-## Security Model
+## Usage
 
-- All sensitive files are encrypted at rest using SOPS and `age`.
-- The `age` key must be available in your local `pass` store under the name `talos-key`.
-- When entering the directory, `.envrc` automatically retrieves the key and decrypts the necessary configuration files to volatile memory. Standard environment variables (`TALOSCONFIG`, `KUBECONFIG`, `CONTROLPLANE_CONF`, `WORKER_CONF`) are then exported to point to these temporary, decrypted files.
-
-## Editing Configuration
-
-Modifications to configuration files should be performed using SOPS to maintain encryption:
+### Connect
 
 ```bash
-sops <file>
+cd hetzner-talos   # direnv decrypts everything to tmpfs
+kubectl get nodes
 ```
+
+### Upgrade Talos
+
+```bash
+talosctl upgrade -n $CONTROL_PLANE_IP --image factory.talos.dev/hcloud-installer/<schematic>:v<version>
+```
+
+### Upgrade Kubernetes
+
+```bash
+talosctl upgrade-k8s --to <version>
+```
+
+### Edit encrypted files
+
+```bash
+sops secrets.yaml
+sops env.yaml
+sops patches/controlplane.yaml
+sops patches/worker.yaml
+sops talosconfig
+```
+
+## Security
+
+- All sensitive files encrypted at rest with SOPS + age.
+- `age` key in `pass` store: `pass show talos-key`.
+- `direnv` decrypts to `tmpfs` — plaintext never touches disk.
